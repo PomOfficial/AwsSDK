@@ -1,0 +1,43 @@
+{
+  "name": "@pomofficial/awssdk",
+  "version": "0.0.0",
+  "description": "Highly configurable wrapper for the Official AWS SDK",
+  "main": "index.js",
+  "files": [
+    "index.d.ts",
+    "index.js.map",
+    "Modules/**/*",
+    "Readme.md",
+    "LICENCE"
+  ],
+  "scripts": {
+    "prepublishOnly": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PomOfficial/AwsSDK.git"
+  },
+  "keywords": [
+    "AWS",
+    "Pomegranate",
+    "Plugin"
+  ],
+  "author": "Jim Bulkowski <jim.b@paperelectron.com> (http://paperelectron.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PomOfficial/AwsSDK/issues"
+  },
+  "homepage": "https://github.com/PomOfficial/AwsSDK#readme",
+  "dependencies": {
+    "@pomegranate/plugin-tools": "^2.0.7",
+    "aws-sdk": "^2.475.0",
+    "bluebird": "^3.5.5"
+  },
+  "devDependencies": {
+    "@types/bluebird": "^3.5.27",
+    "@types/lodash": "^4.14.134",
+    "@types/node": "^12.0.5",
+    "typescript": "^3.5.1"
+  }
+}
