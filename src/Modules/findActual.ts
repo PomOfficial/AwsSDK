@@ -23,6 +23,8 @@ import {noProfile, noAuthKeys} from "./validation";
  */
 export const findActual = function({Env, Logger}){
   let Cr = Bluebird.promisifyAll( new AWS.Config() )
+  console.log(Cr)
+  console.log(Cr.credentials)
   if(!Cr.credentials){
     Logger.warn(WARN_NO_SYNC)
   }
