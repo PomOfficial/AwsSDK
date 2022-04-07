@@ -22,6 +22,18 @@ import {noProfile, noAuthKeys} from "./validation";
  * @returns {*|PromiseLike<T>|Promise<T>}
  */
 export const findActual = function({Env, Logger}){
+
+  AWS.CredentialProviderChain.defaultProviders = [
+    // function () { return new AWS.EnvironmentCredentials('AWS'); },
+    // function () { return new AWS.EnvironmentCredentials('AMAZON'); },
+    // function () { return new AWS.SsoCredentials(); },
+    // function () { return new AWS.SharedIniFileCredentials(); },
+    // function () { return new AWS.ECSCredentials(); },
+    // function () { return new AWS.ProcessCredentials(); },
+    function () { return new AWS.TokenFileWebIdentityCredentials(); },
+    // function () { return new AWS.EC2MetadataCredentials() }
+  ]
+
   let Cr = Bluebird.promisifyAll( new AWS.Config() )
   console.log(Cr)
   console.log(Cr.credentials)
