@@ -31,7 +31,7 @@
   "homepage": "https://github.com/PomOfficial/AwsSDK#readme",
   "dependencies": {
     "@pomegranate/plugin-tools": "^2.0.7",
-    "aws-sdk": "^2.475.0",
+    "aws-sdk": "^2.1109.0",
     "bluebird": "^3.5.5"
   },
   "devDependencies": {
