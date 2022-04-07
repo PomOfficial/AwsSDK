@@ -23,20 +23,20 @@ import {noProfile, noAuthKeys} from "./validation";
  */
 export const findActual = function({Env, Logger}){
 
-  AWS.CredentialProviderChain.defaultProviders = [
-    // function () { return new AWS.EnvironmentCredentials('AWS'); },
-    // function () { return new AWS.EnvironmentCredentials('AMAZON'); },
-    // function () { return new AWS.SsoCredentials(); },
-    // function () { return new AWS.SharedIniFileCredentials(); },
-    // function () { return new AWS.ECSCredentials(); },
-    // function () { return new AWS.ProcessCredentials(); },
-    function () { return new AWS.TokenFileWebIdentityCredentials(); },
-    // function () { return new AWS.EC2MetadataCredentials() }
-  ]
+  // TODO, implement config settings for this.
+
+  // AWS.CredentialProviderChain.defaultProviders = [
+  //   // function () { return new AWS.EnvironmentCredentials('AWS'); },
+  //   // function () { return new AWS.EnvironmentCredentials('AMAZON'); },
+  //   // function () { return new AWS.SsoCredentials(); },
+  //   // function () { return new AWS.SharedIniFileCredentials(); },
+  //   // function () { return new AWS.ECSCredentials(); },
+  //   // function () { return new AWS.ProcessCredentials(); },
+  //   function () { return new AWS.TokenFileWebIdentityCredentials(); },
+  //   // function () { return new AWS.EC2MetadataCredentials() }
+  // ]
 
   let Cr = Bluebird.promisifyAll( new AWS.Config() )
-  console.log(Cr)
-  console.log(Cr.credentials)
   if(!Cr.credentials){
     Logger.warn(WARN_NO_SYNC)
   }
@@ -63,6 +63,14 @@ export const findActual = function({Env, Logger}){
         if(credentials instanceof AWS.EC2MetadataCredentials){
           Logger.log(USING_META)
         }
+        if(credentials instanceof AWS.EC2MetadataCredentials){
+          Logger.log(USING_META)
+        }
+
+        if(credentials instanceof AWS.TokenFileWebIdentityCredentials){
+          Logger.log("Using OIDC credentials")
+        }
+
       }
 
       return AWS
