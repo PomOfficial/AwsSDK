@@ -51,7 +51,6 @@ export const findActual = function({Env, Logger}){
   //@ts-ignore
   return Cr.getCredentialsAsync()
     .then((credentials) => {
-      Logger.log(credentials)
       if(credentials){
         if(credentials instanceof AWS.SharedIniFileCredentials){
           //@ts-ignore
